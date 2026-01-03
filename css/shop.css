@@ -1,0 +1,49 @@
+.shop-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffd6a5, #fdffb6);
+  }
+  
+  .shop-hero h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .shop-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .shop-container {
+    padding: 3rem 2rem;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  
+  .product-card {
+    display: block;
+    background: #ffffff;
+    padding: 1rem;
+    text-decoration: none;
+    color: #1a1a1a;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  }
+  
+  .product-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.05rem;
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  

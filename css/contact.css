@@ -1,0 +1,53 @@
+.contact-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #caffbf, #9bf6ff);
+  }
+  
+  .contact-hero h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-container {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contact-form {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .contact-form label {
+    display: block;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+  
+  .contact-form button {
+    padding: 0.8rem 2rem;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

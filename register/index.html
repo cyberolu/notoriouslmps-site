@@ -1,0 +1,23 @@
+<form>
+    <input type="email" name="email" required>
+    <input type="password" name="password" required>
+    <button type="submit">Create account</button>
+  </form>
+  
+  <script type="module">
+    import { register } from "/js/auth.js";
+  
+    const form = document.querySelector("form");
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+  
+      try {
+        await register(form.email.value, form.password.value);
+        window.location.href = "/account";
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+  </script>
+  
