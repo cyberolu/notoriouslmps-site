@@ -18,42 +18,42 @@
       <a href="/shop">Shop</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
+
+      <a href="/cart" class="cart-link">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
     </nav>
   </header>
 
   <main class="product-container">
 
     <div class="product-gallery">
-  
-      <div class="thumbnail-column">
-        <div class="thumb"></div>
-        <div class="thumb"></div>
-        <div class="thumb"></div>
-      </div>
-  
+      <div class="thumbnail-column" id="thumbnails"></div>
+
       <div class="main-image">
-        <div class="image-placeholder large"></div>
+        <div class="image-placeholder large" id="mainImage"></div>
       </div>
-  
     </div>
-  
+
     <div class="product-details">
-      <h1>Peacock Bottle Lamp</h1>
-      <p class="price">£120</p>
-  
-      <p class="description">
-        Handmade upcycled bottle lamp with bespoke shade.
-        One of a kind statement piece, designed to stand out.
-      </p>
-  
-      <button class="add-to-cart">Add to cart</button>
+      <h1 id="productTitle"></h1>
+      <p class="price" id="productPrice"></p>
+      <p class="description" id="productDescription"></p>
+
+      <button class="add-to-cart" id="addToCartBtn">
+        Add to cart
+      </button>
     </div>
-  
+
   </main>
-  
+
   <footer class="site-footer">
     <p>© NotoriousLMPs · Handmade in Scotland</p>
   </footer>
+
+  <script type="module" src="/js/product.js"></script>
+  <script src="/js/cart-count.js"></script>
 
 </body>
 </html>

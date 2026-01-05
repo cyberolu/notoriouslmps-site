@@ -1,100 +1,217 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: "Georgia", serif;
-    color: #1a1a1a;
-    background-color: #faf7f2;
-    line-height: 1.6;
-  }
-  
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: #ffffff;
-  }
-  
-  .logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  .nav a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 500;
-  }
-  
-  .hero {
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #e6c6ff, #c6e2ff);
-    text-align: center;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background: #1a1a1a;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .featured {
-    padding: 3rem 2rem;
-  }
-  
-  .featured h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-  }
-  
-  .product-card {
-    background: #ffffff;
-    padding: 1rem;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-  }
-  
-  .image-placeholder {
-    height: 220px;
-    background: #ddd;
-    margin-bottom: 1rem;
-  }
-  
-  .about-snippet {
-    padding: 3rem 2rem;
-    background: #fff3e8;
-    text-align: center;
-  }
-  
-  .site-footer {
-    padding: 1.5rem;
-    text-align: center;
-    background: #1a1a1a;
-    color: #ffffff;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Georgia", serif;
+  color: #1a1a1a;
+  background-color: #faf7f2;
+  line-height: 1.6;
+}
+
+/* =========================
+   Header & Navigation
+========================= */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  position: relative;
+}
+
+/* =========================
+   Cart Icon + Count
+========================= */
+
+.cart-wrapper {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+.cart-link {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-count {
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 50%;
+  margin-left: 0.35rem;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* =========================
+   Mini Cart Dropdown
+========================= */
+
+.mini-cart {
+  position: absolute;
+  right: 0;
+  top: 140%;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: none;
+  z-index: 1000;
+}
+
+.cart-wrapper:hover .mini-cart {
+  display: block;
+}
+
+.mini-cart-items {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.mini-cart-item {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.mini-cart-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.mini-cart-item-info {
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.mini-cart-item-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.mini-cart-item-actions button {
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.mini-cart-footer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.view-cart-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   Hero Section
+========================= */
+
+.hero {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #e6c6ff, #c6e2ff);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* =========================
+   Featured / Generic Sections
+========================= */
+
+.featured {
+  padding: 3rem 2rem;
+}
+
+.featured h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+
+.image-placeholder {
+  height: 220px;
+  background: #ddd;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   About / Footer
+========================= */
+
+.about-snippet {
+  padding: 3rem 2rem;
+  background: #fff3e8;
+  text-align: center;
+}
+
+.site-footer {
+  padding: 1.5rem;
+  text-align: center;
+  background: #1a1a1a;
+  color: #ffffff;
+}

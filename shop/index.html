@@ -14,10 +14,30 @@
     <div class="logo">
       <a href="/">NotoriousLMPs</a>
     </div>
+
     <nav class="nav">
       <a href="/shop">Shop</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
+
+      <!-- Cart wrapper -->
+      <div class="cart-wrapper">
+        <a href="/cart" class="cart-link" id="cartToggle">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <!-- Mini cart dropdown -->
+        <div class="mini-cart" id="miniCart">
+          <div class="mini-cart-items" id="miniCartItems"></div>
+
+          <div class="mini-cart-footer">
+            <a href="/cart" class="view-cart-btn">
+              View cart
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -27,40 +47,15 @@
   </section>
 
   <main class="shop-container">
-
-    <div class="product-grid">
-
-      <a href="/product" class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Peacock Bottle Lamp</h3>
-        <p class="price">£120</p>
-      </a>
-
-      <a href="/product" class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Vintage Gin Lamp</h3>
-        <p class="price">£110</p>
-      </a>
-
-      <a href="/product" class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Blue Glass Statement Lamp</h3>
-        <p class="price">£135</p>
-      </a>
-
-      <a href="/product" class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Amber Bottle Table Lamp</h3>
-        <p class="price">£125</p>
-      </a>
-
-    </div>
-
+    <div class="product-grid"></div>
   </main>
 
   <footer class="site-footer">
     <p>© NotoriousLMPs · Handmade in Scotland</p>
   </footer>
 
+  <script type="module" src="/js/products.js"></script>
+  <script src="/js/cart-count.js"></script>
+  <script src="/js/mini-cart.js"></script>
 </body>
 </html>

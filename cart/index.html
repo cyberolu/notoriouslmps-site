@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart | NotoriousLMPs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <a href="/">NotoriousLMPs</a>
+    </div>
+    <nav class="nav">
+      <a href="/shop">Shop</a>
+
+      <a href="/cart" class="cart-link">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="cart-container">
+    <h1>Your Cart</h1>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-summary">
+      <p>Total: £<span id="cartTotal">0.00</span></p>
+
+      <button id="checkoutBtn" disabled>
+        Proceed to checkout
+      </button>
+
+      <p id="emptyNotice" style="margin-top: 1rem; opacity: 0.7;">
+        Your cart is empty
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© NotoriousLMPs · Handmade in Scotland</p>
+  </footer>
+
+  <script src="/js/cart.js"></script>
+  <script src="/js/cart-count.js"></script>
+
+</body>
+</html>

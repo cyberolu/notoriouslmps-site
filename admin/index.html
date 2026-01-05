@@ -8,14 +8,52 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
+
 <body style="display:none;">
 
   <h1>Admin Dashboard</h1>
 
-  <p>You are logged in as an administrator.</p>
+  <section class="admin-section">
+    <h2 id="formTitle">Add Product</h2>
+
+    <form id="productForm">
+
+      <input type="hidden" name="productId">
+
+      <label>
+        Product title
+        <input type="text" name="title" required>
+      </label>
+
+      <label>
+        Price (£)
+        <input type="number" name="price" required>
+      </label>
+
+      <label>
+        Image URLs (comma separated)
+        <textarea name="images" rows="3" required></textarea>
+      </label>
+
+      <label>
+        Description
+        <textarea name="description" rows="4" required></textarea>
+      </label>
+
+      <button type="submit" id="submitBtn">Add product</button>
+      <button type="button" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+
+    </form>
+  </section>
+
+  <section class="admin-section">
+    <h2>Existing products</h2>
+    <div id="productList"></div>
+  </section>
 
   <button id="logoutBtn">Logout</button>
 
   <script type="module" src="/js/admin.js"></script>
+
 </body>
 </html>
