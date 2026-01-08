@@ -10,11 +10,28 @@
 <body>
 
   <header class="site-header">
-    <div class="logo">NotoriousLMPs</div>
+    <div class="logo">
+      <a href="/">NotoriousLMPs</a>
+    </div>
+
     <nav class="nav">
       <a href="/shop">Shop</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
+
+      <div class="cart-wrapper">
+        <a href="/cart" class="cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <div class="mini-cart" id="miniCart">
+          <div class="mini-cart-items" id="miniCartItems"></div>
+          <div class="mini-cart-footer">
+            <a href="/cart" class="view-cart-btn">View cart</a>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -27,24 +44,8 @@
   <section class="featured">
     <h2>Featured pieces</h2>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Peacock Bottle Lamp</h3>
-        <p>£120</p>
-      </div>
-
-      <div class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Vintage Gin Lamp</h3>
-        <p>£110</p>
-      </div>
-
-      <div class="product-card">
-        <div class="image-placeholder"></div>
-        <h3>Blue Glass Statement Lamp</h3>
-        <p>£135</p>
-      </div>
+    <div class="product-grid" id="featuredGrid">
+      <!-- Featured products load here -->
     </div>
   </section>
 
@@ -59,6 +60,10 @@
   <footer class="site-footer">
     <p>© NotoriousLMPs · Handmade in Scotland</p>
   </footer>
+
+  <script type="module" src="/js/featured-home.js"></script>
+  <script src="/js/cart-count.js"></script>
+  <script src="/js/mini-cart.js"></script>
 
 </body>
 </html>

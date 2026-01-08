@@ -1,0 +1,2 @@
+// js/stripe-config.js
+export const STRIPE_PUBLISHABLE_KEY = "pk_test_51SmBzEPrOIaScWgrD0ZuMb7Z0lvF8VMsbc28WuNaW9SbjGcLdYousLvXXNpnveEbzVY2rjlx79nQ4e8NUzkmJ9Jw00KKn6WALV";

@@ -3,16 +3,19 @@ const admin = require("firebase-admin");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Initialise Firebase Admin once
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.applicationDefault()
+    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT))
   });
 }
 
 const db = admin.firestore();
 
 exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405 };
+  }
+
   const sig = event.headers["stripe-signature"];
 
   let stripeEvent;
@@ -27,50 +30,37 @@ exports.handler = async (event) => {
     console.error("Webhook signature verification failed:", err.message);
     return {
       statusCode: 400,
-      body: "Webhook Error"
+      body: `Webhook Error: ${err.message}`
     };
   }
 
-  // Only act on successful checkout
   if (stripeEvent.type === "checkout.session.completed") {
     const session = stripeEvent.data.object;
 
-    try {
-      // IMPORTANT: expand product metadata
-      const lineItems = await stripe.checkout.sessions.listLineItems(
-        session.id,
-        { expand: ["data.price.product"] }
-      );
+    const lineItems = await stripe.checkout.sessions.listLineItems(
+      session.id,
+      { expand: ["data.price.product"] }
+    );
 
-      const batch = db.batch();
+    const batch = db.batch();
 
-      lineItems.data.forEach(item => {
-        const productId = item.price.product.metadata.productId;
-        const qty = item.quantity;
+    for (const item of lineItems.data) {
+      const productId = item.price.product.metadata.productId;
+      const qty = item.quantity;
 
-        if (!productId) return;
+      const ref = db.collection("products").doc(productId);
+      const snap = await ref.get();
 
-        const productRef = db.collection("products").doc(productId);
-
-        // Atomic decrement
-        batch.update(productRef, {
-          stock: admin.firestore.FieldValue.increment(-qty)
+      if (snap.exists) {
+        const currentStock = snap.data().stock || 0;
+        batch.update(ref, {
+          stock: Math.max(currentStock - qty, 0)
         });
-      });
-
-      await batch.commit();
-
-    } catch (err) {
-      console.error("Stock update failed:", err);
-      return {
-        statusCode: 500,
-        body: "Stock update failed"
-      };
+      }
     }
+
+    await batch.commit();
   }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ received: true })
-  };
+  return { statusCode: 200 };
 };

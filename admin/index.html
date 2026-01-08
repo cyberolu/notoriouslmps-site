@@ -27,7 +27,13 @@
 
       <label>
         Price (£)
-        <input type="number" name="price" required>
+        <input type="number" name="price" step="0.01" required>
+      </label>
+
+      <!-- ✅ NEW STOCK FIELD -->
+      <label>
+        Stock available
+        <input type="number" name="stock" min="0" required>
       </label>
 
       <label>
@@ -38,6 +44,12 @@
       <label>
         Description
         <textarea name="description" rows="4" required></textarea>
+      </label>
+
+      <!-- Featured toggle -->
+      <label style="display:flex; align-items:center; gap:0.5rem; margin-top:1rem;">
+        <input type="checkbox" name="featured">
+        Featured on homepage
       </label>
 
       <button type="submit" id="submitBtn">Add product</button>

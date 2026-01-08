@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Complete | NotoriousLMPs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <a href="/">NotoriousLMPs</a>
+    </div>
+
+    <nav class="nav">
+      <a href="/shop">Shop</a>
+    </nav>
+  </header>
+
+  <main style="padding: 4rem 2rem; text-align: center;">
+
+    <h1>Thank you for your order</h1>
+
+    <p style="margin-top: 1rem; font-size: 1.1rem;">
+      Your payment was successful and your lamp is being prepared.
+    </p>
+
+    <p style="margin-top: 1rem; opacity: 0.8;">
+      A confirmation email will be sent shortly.
+    </p>
+
+    <a href="/shop" class="cta-button" style="margin-top: 2rem; display: inline-block;">
+      Continue shopping
+    </a>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© NotoriousLMPs · Handmade in Scotland</p>
+  </footer>
+
+  <script>
+    // Clear cart after successful payment
+    localStorage.removeItem("cart");
+  </script>
+
+</body>
+</html>

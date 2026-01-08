@@ -19,6 +19,10 @@ const cancelEditBtn = document.getElementById("cancelEditBtn");
 
 let editingProductId = null;
 
+/* =====================
+   Auth Guard
+===================== */
+
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "/login";
@@ -38,7 +42,9 @@ form.addEventListener("submit", async (e) => {
 
   const title = form.title.value.trim();
   const price = Number(form.price.value);
+  const stock = Number(form.stock.value);
   const description = form.description.value.trim();
+  const featured = form.featured.checked;
 
   const images = form.images.value
     .split(",")
@@ -50,19 +56,25 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  if (stock < 0) {
+    alert("Stock cannot be negative");
+    return;
+  }
+
+  const productData = {
+    title,
+    price,
+    stock,
+    description,
+    images,
+    featured
+  };
+
   if (editingProductId) {
-    await updateDoc(doc(db, "products", editingProductId), {
-      title,
-      price,
-      description,
-      images
-    });
+    await updateDoc(doc(db, "products", editingProductId), productData);
   } else {
     await addDoc(collection(db, "products"), {
-      title,
-      price,
-      description,
-      images,
+      ...productData,
       createdAt: serverTimestamp()
     });
   }
@@ -82,7 +94,7 @@ async function loadProducts() {
 
   snapshot.forEach((docSnap) => {
     const product = docSnap.data();
-    const thumbUrl = product.images && product.images.length ? product.images[0] : "";
+    const thumbUrl = product.images?.[0] || "";
 
     const div = document.createElement("div");
     div.className = "product-item";
@@ -94,7 +106,9 @@ async function loadProducts() {
 
       <div class="product-info">
         <strong>${product.title}</strong><br>
-        £${product.price}
+        £${product.price}<br>
+        Stock: ${product.stock}<br>
+        ${product.featured ? "⭐ Featured" : ""}
       </div>
 
       <div class="product-actions">
@@ -127,8 +141,10 @@ function startEdit(id, product) {
 
   form.title.value = product.title;
   form.price.value = product.price;
+  form.stock.value = product.stock;
   form.description.value = product.description;
   form.images.value = product.images.join(", ");
+  form.featured.checked = !!product.featured;
 
   formTitle.textContent = "Edit Product";
   submitBtn.textContent = "Update product";

@@ -168,21 +168,14 @@ body {
 }
 
 /* =========================
-   Featured / Generic Sections
+   PRODUCT GRID (SHOP + FEATURED)
 ========================= */
 
-.featured {
-  padding: 3rem 2rem;
-}
-
-.featured h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
 .product-grid {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -191,16 +184,50 @@ body {
   padding: 1rem;
   text-align: center;
   border: 1px solid #e0e0e0;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
 }
 
-.image-placeholder {
-  height: 220px;
-  background: #ddd;
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 280px;      /* SAME AS SHOP */
+  object-fit: cover;
+  display: block;
   margin-bottom: 1rem;
 }
 
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.product-card .price {
+  font-weight: bold;
+}
+
 /* =========================
-   About / Footer
+   Product Grid Responsive
+========================= */
+
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   About Section
 ========================= */
 
 .about-snippet {
@@ -208,6 +235,70 @@ body {
   background: #fff3e8;
   text-align: center;
 }
+
+.cart-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cart-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-item-actions button {
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+.cart-summary {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.cart-summary p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* ✅ CHECKOUT BUTTON */
+
+#checkoutBtn {
+  padding: 0.8rem 2rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#checkoutBtn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Footer
+========================= */
 
 .site-footer {
   padding: 1.5rem;

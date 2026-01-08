@@ -31,16 +31,11 @@ function renderCart() {
     const div = document.createElement("div");
     div.className = "cart-item";
 
-    const stockText = item.stock !== undefined
-      ? `<small>Stock available: ${item.stock}</small>`
-      : "";
-
     div.innerHTML = `
       <img src="${item.image}" alt="">
       <div class="cart-item-info">
         <strong>${item.title}</strong><br>
-        £${item.price.toFixed(2)}<br>
-        ${stockText}
+        £${item.price.toFixed(2)}
       </div>
 
       <div class="cart-item-actions">
@@ -51,7 +46,6 @@ function renderCart() {
       </div>
     `;
 
-    // Decrease quantity
     div.querySelector("[data-minus]").addEventListener("click", () => {
       if (item.qty > 1) {
         item.qty -= 1;
@@ -61,17 +55,15 @@ function renderCart() {
       saveAndRender();
     });
 
-    // Increase quantity (respect stock)
     div.querySelector("[data-plus]").addEventListener("click", () => {
       if (item.stock !== undefined && item.qty >= item.stock) {
-        alert("You have reached the maximum available stock for this item.");
+        alert("No more stock available for this item.");
         return;
       }
       item.qty += 1;
       saveAndRender();
     });
 
-    // Remove item
     div.querySelector("[data-remove]").addEventListener("click", () => {
       cart.splice(index, 1);
       saveAndRender();
@@ -91,5 +83,36 @@ function saveAndRender() {
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
+
+/* =====================
+   STRIPE CHECKOUT
+===================== */
+
+checkoutBtn.addEventListener("click", async () => {
+  if (!cart.length) return;
+
+  checkoutBtn.disabled = true;
+  checkoutBtn.textContent = "Redirecting…";
+
+  try {
+    const res = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: cart })
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error("No checkout URL returned");
+    }
+  } catch (err) {
+    alert("Checkout failed. Please try again.");
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = "Proceed to checkout";
+  }
+});
 
 renderCart();
