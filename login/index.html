@@ -1,23 +1,171 @@
-<form>
-    <input type="email" name="email" required>
-    <input type="password" name="password" required>
-    <button type="submit">Login</button>
-  </form>
-  
-  <script type="module">
-    import { login } from "/js/auth.js";
-  
-    const form = document.querySelector("form");
-  
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-  
-      try {
-        await login(form.email.value, form.password.value);
-        window.location.href = "/admin/";
-      } catch (err) {
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Login | Notorious Lamps</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/auth.css">
+
+</head>
+
+<body>
+
+<div id="siteHeader"></div>
+
+<main class="auth-container">
+
+    <form id="loginForm" class="auth-form">
+
+        <img
+            src="/assets/logo.png"
+            alt="Notorious Lamps"
+            class="auth-logo">
+
+        <h1>Welcome Back</h1>
+
+        <p class="auth-subtitle">
+            Sign in to your account
+        </p>
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            name="email"
+            required>
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="password"
+            required>
+
+        <button type="submit">
+            Login
+        </button>
+
+        <button
+            type="button"
+            id="googleLogin"
+            class="google-btn">
+
+            <img
+                src="/assets/google.png"
+                alt="Google">
+
+            Continue with Google
+
+        </button>
+
+        <button
+            type="button"
+            id="forgotPassword"
+            class="text-button">
+
+            Forgot Password?
+
+        </button>
+
+        <p class="auth-footer">
+
+            Don't have an account?
+
+            <a href="/register/">
+                Register
+            </a>
+
+        </p>
+
+    </form>
+
+</main>
+
+<script type="module">
+
+import {
+    login,
+    loginWithGoogle,
+    resetPassword,
+    isAdmin
+} from "/js/auth.js";
+
+const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+        const user = await login(
+            form.email.value,
+            form.password.value
+        );
+
+        if (await isAdmin(user.user.uid)) {
+            window.location.href = "/admin/";
+        } else {
+            window.location.href = "/account/";
+        }
+
+    } catch (err) {
         alert(err.message);
-      }
-    });
-  </script>
-  
+    }
+
+});
+
+document
+.getElementById("googleLogin")
+.addEventListener("click", async () => {
+
+    try {
+
+        const user = await loginWithGoogle();
+
+        if (await isAdmin(user.uid)) {
+            window.location.href = "/admin/";
+        } else {
+            window.location.href = "/account/";
+        }
+
+    } catch (err) {
+        alert(err.message);
+    }
+
+});
+
+document
+.getElementById("forgotPassword")
+.addEventListener("click", async () => {
+
+    const email = form.email.value.trim();
+
+    if (!email) {
+        alert("Enter your email first.");
+        return;
+    }
+
+    try {
+        await resetPassword(email);
+        alert("Password reset email sent.");
+    } catch (err) {
+        alert(err.message);
+    }
+
+});
+
+</script>
+
+<div id="siteFooter"></div>
+
+<script type="module" src="/js/cart-count.js"></script>
+<script type="module" src="/js/mini-cart.js"></script>
+<script type="module" src="/js/layout.js"></script>
+
+</body>
+</html>

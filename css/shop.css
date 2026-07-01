@@ -1,6 +1,17 @@
-/* =========================
-   Shop Container
-========================= */
+.shop-hero {
+  padding: 4rem 2rem;
+  background: #f1e4d3;
+  text-align: center;
+}
+
+.shop-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin-bottom: 0.75rem;
+}
+
+.shop-hero p {
+  font-size: 1.1rem;
+}
 
 .shop-container {
   max-width: 1200px;
@@ -8,111 +19,40 @@
   padding: 4rem 1rem;
 }
 
-/* =========================
-   Product Grid
-========================= */
-
-.product-grid {
-  display: grid;
+.shop-container .product-grid {
   grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
 }
 
-/* =========================
-   Product Card
-========================= */
-
-.product-card {
-  background: white;
-  border: 1px solid #e5e5e5;
-  padding: 1.5rem;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-}
-
-/* =========================
-   Product Image
-========================= */
-
-.product-card img {
-  width: 100%;
+.shop-container .product-card img {
   height: 320px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
 }
 
-.product-card:hover img {
-  transform: scale(1.03);
-}
-
-/* =========================
-   Product Text
-========================= */
-
-.product-card h3 {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-}
-
-.product-card .price {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* =========================
-   Responsive Breakpoints
-========================= */
-
-/* Large laptops */
 @media (max-width: 1200px) {
-  .product-grid {
+  .shop-container .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Tablets */
 @media (max-width: 900px) {
   .shop-container {
     padding: 3rem 1rem;
   }
 
-  .product-grid {
+  .shop-container .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
   }
 
-  .product-card img {
+  .shop-container .product-card img {
     height: 300px;
   }
 }
 
-/* Large phones */
-@media (max-width: 600px) {
-  .product-card img {
-    height: 260px;
-  }
-}
-
-/* Small phones */
 @media (max-width: 480px) {
-  .product-grid {
+  .shop-container .product-grid {
     grid-template-columns: 1fr;
   }
 
-  .product-card {
-    padding: 1.2rem;
-  }
-
-  .product-card img {
+  .shop-container .product-card img {
     height: 240px;
   }
 }

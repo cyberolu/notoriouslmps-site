@@ -1,59 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>Product | NotoriousLMPs</title>
+  <title>Product | Notorious Lamps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View handmade bottle lamps from Notorious Lamps.">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/product.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="logo">
-      <a href="/">NotoriousLMPs</a>
-    </div>
-    <nav class="nav">
-      <a href="/shop">Shop</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-
-      <a href="/cart" class="cart-link">
-        🛒 Cart
-        <span class="cart-count" id="cartCount">0</span>
-      </a>
-    </nav>
-  </header>
+  <div id="siteHeader"></div>
 
   <main class="product-container">
-
-    <div class="product-gallery">
+    <section class="product-gallery">
       <div class="thumbnail-column" id="thumbnails"></div>
 
       <div class="main-image">
-        <div class="image-placeholder large" id="mainImage"></div>
+        <img
+          id="mainImage"
+          src="/assets/placeholder.jpg"
+          alt="Product image">
       </div>
-    </div>
+    </section>
 
-    <div class="product-details">
-      <h1 id="productTitle"></h1>
+    <section class="product-details">
+      <h1 id="productTitle">Loading...</h1>
       <p class="price" id="productPrice"></p>
       <p class="description" id="productDescription"></p>
+      <p id="stockStatus"></p>
 
-      <button class="add-to-cart" id="addToCartBtn">
-        Add to cart
+      <div class="shade-selector" id="shadeSelector" style="display:none;">
+        <h2>Choose your shade</h2>
+
+        <div class="shade-carousel">
+          <button type="button" class="shade-arrow" id="shadePrev">‹</button>
+
+          <div id="shadeOptions"></div>
+
+          <button type="button" class="shade-arrow" id="shadeNext">›</button>
+        </div>
+      </div>
+
+      <button id="addToCartBtn" class="add-to-cart">
+        Add to Cart
       </button>
-    </div>
-
+      <div class="product-trust">
+      <p>✓ Handmade in Scotland</p>
+      <p>✓ One-of-a-kind design</p>
+      <p>✓ Secure checkout powered by Stripe</p>
+      <p>✓ Carefully packaged for safe delivery</p>
+</div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© NotoriousLMPs · Handmade in Scotland</p>
-  </footer>
+  <div id="siteFooter"></div>
 
   <script type="module" src="/js/product.js"></script>
-  <script src="/js/cart-count.js"></script>
+  <script type="module" src="/js/cart-count.js"></script>
+  <script type="module" src="/js/mini-cart.js"></script>
+  <script type="module" src="/js/layout.js"></script>
 
 </body>
 </html>

@@ -1,53 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
+
   <meta charset="UTF-8">
-  <title>Cart | NotoriousLMPs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Shopping Cart | Notorious Lamps</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Review your shopping cart before securely checking out with Stripe.">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/cart.css">
+
 </head>
+
 <body>
 
-  <header class="site-header">
-    <div class="logo">
-      <a href="/">NotoriousLMPs</a>
-    </div>
-    <nav class="nav">
-      <a href="/shop">Shop</a>
+<div id="siteHeader"></div>
 
-      <a href="/cart" class="cart-link">
-        🛒 Cart
-        <span class="cart-count" id="cartCount">0</span>
-      </a>
-    </nav>
-  </header>
+<main class="cart-container">
 
-  <main class="cart-container">
-    <h1>Your Cart</h1>
+  <h1 id="cartHeading">Your Cart</h1>
 
-    <div id="cartItems"></div>
+  <div id="cartItems"></div>
 
-    <div class="cart-summary">
-      <p>Total: £<span id="cartTotal">0.00</span></p>
+  <div class="cart-summary">
 
-      <button id="checkoutBtn" disabled>
-        Proceed to checkout
-      </button>
+    <p>
 
-      <p id="emptyNotice" style="margin-top: 1rem; opacity: 0.7;">
-        Your cart is empty
-      </p>
-    </div>
-  </main>
+      Total:
+      <strong>
+        £<span id="cartTotal">0.00</span>
+      </strong>
 
-  <footer class="site-footer">
-    <p>© NotoriousLMPs · Handmade in Scotland</p>
-  </footer>
+    </p>
 
-  <script src="/js/cart.js"></script>
-  <script src="/js/cart-count.js"></script>
+    <button id="checkoutBtn" disabled>
+
+      Proceed to Secure Checkout
+
+    </button>
+
+    <p
+      id="emptyNotice"
+      style="margin-top:1rem;opacity:.7;">
+
+      Your cart is currently empty.
+
+    </p>
+
+  </div>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script type="module" src="/js/cart.js"></script>
+<script type="module" src="/js/cart-count.js"></script>
+<script type="module" src="/js/mini-cart.js"></script>
+<script type="module" src="/js/layout.js"></script>
 
 </body>
 </html>

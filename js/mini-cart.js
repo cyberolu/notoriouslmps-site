@@ -1,8 +1,13 @@
-const miniCartEl = document.getElementById("miniCart");
 const miniCartItemsEl = document.getElementById("miniCartItems");
 
 function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  try {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  } catch (error) {
+    console.error("Invalid cart data:", error);
+    localStorage.removeItem("cart");
+    return [];
+  }
 }
 
 function saveCart(cart) {
@@ -24,49 +29,48 @@ function renderMiniCart() {
     const div = document.createElement("div");
     div.className = "mini-cart-item";
 
-    const stockInfo =
-      item.stock !== undefined
-        ? `<small>Stock: ${item.stock}</small>`
-        : "";
-
     div.innerHTML = `
-      <img src="${item.image}" alt="">
+      <img
+        src="${item.image || "/assets/placeholder.jpg"}"
+        alt="${item.title || "Lamp"}"
+        onerror="this.src='/assets/placeholder.jpg';"
+      >
+
       <div class="mini-cart-item-info">
-        <strong>${item.title}</strong><br>
-        £${item.price.toFixed(2)}<br>
-        ${stockInfo}
+        <strong>${item.title || "Untitled lamp"}</strong><br>
+        £${Number(item.price || 0).toFixed(2)}<br>
+        <small>Qty: ${Number(item.qty) || 1}</small>
       </div>
+
       <div class="mini-cart-item-actions">
-        <button data-minus>-</button>
-        <span>${item.qty}</span>
-        <button data-plus>+</button>
-        <button data-remove>✕</button>
+        <button type="button" data-minus>-</button>
+        <button type="button" data-plus>+</button>
+        <button type="button" data-remove>✕</button>
       </div>
     `;
 
-    // Decrease quantity
     div.querySelector("[data-minus]").addEventListener("click", () => {
       if (item.qty > 1) {
         item.qty -= 1;
       } else {
         cart.splice(index, 1);
       }
+
       saveCart(cart);
       updateAll();
     });
 
-    // Increase quantity (respect stock)
     div.querySelector("[data-plus]").addEventListener("click", () => {
       if (item.stock !== undefined && item.qty >= item.stock) {
         alert("No more stock available for this item.");
         return;
       }
+
       item.qty += 1;
       saveCart(cart);
       updateAll();
     });
 
-    // Remove item
     div.querySelector("[data-remove]").addEventListener("click", () => {
       cart.splice(index, 1);
       saveCart(cart);
@@ -84,17 +88,11 @@ function updateAll() {
     window.updateCartCount();
   }
 
-  // Update main cart page if present
-  if (typeof renderCart === "function") {
-    renderCart();
+  if (typeof window.renderCart === "function") {
+    window.renderCart();
   }
 }
 
-// Initial render
-renderMiniCart();
-
-// Keep in sync across tabs
+document.addEventListener("DOMContentLoaded", renderMiniCart);
 window.addEventListener("storage", renderMiniCart);
-
-// Expose for other scripts
 window.renderMiniCart = renderMiniCart;

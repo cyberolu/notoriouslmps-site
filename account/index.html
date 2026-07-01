@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <title>My Account | Notorious Lamps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/account.css">
+</head>
+
+<body style="display:none;">
+
+  <div id="siteHeader"></div>
+
+  <main class="account-container">
+    <h1 id="accountHeading">My Account</h1>
+
+    <section class="account-grid">
+
+      <div class="account-card">
+        <h2>Account Details</h2>
+        <p><strong>Name:</strong> <span id="userName">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+      </div>
+
+      <div class="account-card">
+        <h2>Current Basket</h2>
+        <div id="accountCartItems">
+          <p>Your basket will appear here.</p>
+        </div>
+        <a href="/cart/" class="cta-button">View Basket</a>
+      </div>
+
+      <div class="account-card">
+        <h2>Recent Orders</h2>
+        <div id="accountOrders">
+          <p>No orders yet.</p>
+        </div>
+      </div>
+
+      <div class="account-card">
+        <h2>Wishlist</h2>
+        <p>Coming soon.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script type="module" src="/js/account.js"></script>
+  <script type="module" src="/js/cart-count.js"></script>
+  <script type="module" src="/js/mini-cart.js"></script>
+  <script type="module" src="/js/layout.js"></script>
+
+</body>
+</html>

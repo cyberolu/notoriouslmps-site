@@ -1,22 +1,29 @@
 function updateCartCount() {
-    const countEl = document.getElementById("cartCount");
-    if (!countEl) return;
-  
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  
-    const totalQty = cart.reduce((sum, item) => {
-      return sum + (Number(item.qty) || 0);
-    }, 0);
-  
-    countEl.textContent = totalQty;
+  const countEl = document.getElementById("cartCount");
+
+  if (!countEl) return;
+
+  let cart = [];
+
+  try {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+  } catch (error) {
+    console.error("Invalid cart data:", error);
+    localStorage.removeItem("cart");
   }
-  
-  // Run on page load
-  updateCartCount();
-  
-  // Update if cart changes in another tab
-  window.addEventListener("storage", updateCartCount);
-  
-  // Expose globally so other scripts can trigger updates
-  window.updateCartCount = updateCartCount;
-  
+
+  const totalQty = cart.reduce((total, item) => {
+    return total + (Number(item.qty) || 0);
+  }, 0);
+
+  countEl.textContent = totalQty;
+}
+
+// Initial load
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+// Sync between browser tabs
+window.addEventListener("storage", updateCartCount);
+
+// Allow other scripts to refresh the counter
+window.updateCartCount = updateCartCount;

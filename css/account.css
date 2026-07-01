@@ -1,0 +1,56 @@
+.account-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.account-container h1 {
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.account-card {
+    background: #ffffff;
+    border: 1px solid #e6d8c3;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.account-card h2 {
+    margin-bottom: 1.25rem;
+    color: #1f1a16;
+}
+
+.account-card p {
+    margin-bottom: .8rem;
+    line-height: 1.8;
+}
+
+.account-card .cta-button {
+    margin-top: 1.5rem;
+}
+
+#accountCartItems,
+#accountOrders {
+    min-height: 80px;
+}
+
+@media (max-width: 900px) {
+
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-container {
+        padding: 3rem 1rem;
+    }
+
+}

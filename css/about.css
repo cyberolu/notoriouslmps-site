@@ -15,10 +15,13 @@
   
   .about-content {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3rem;
-    padding: 3rem 2rem;
-  }
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 4rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    align-items: center;
+}
   
   .about-text h2 {
     margin-bottom: 1rem;
@@ -43,4 +46,37 @@
       grid-template-columns: 1fr;
     }
   }
-  
+  .about-image img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
+.about-text {
+    max-width: 700px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+}
+.about-hero {
+    background: linear-gradient(135deg,#f7e6dd,#efe5d4);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: .75rem;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+}

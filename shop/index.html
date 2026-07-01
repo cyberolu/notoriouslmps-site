@@ -1,61 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
+
   <meta charset="UTF-8">
-  <title>Shop | NotoriousLMPs</title>
+  <title>Shop | Notorious Lamps</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta
+    name="description"
+    content="Shop handmade bottle lamps from Notorious Lamps."
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/shop.css">
+
 </head>
+
 <body>
 
-  <header class="site-header">
-    <div class="logo">
-      <a href="/">NotoriousLMPs</a>
-    </div>
+  <div id="siteHeader"></div>
+<main>
 
-    <nav class="nav">
-      <a href="/shop">Shop</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+<section class="shop-hero">
 
-      <!-- Cart wrapper -->
-      <div class="cart-wrapper">
-        <a href="/cart" class="cart-link" id="cartToggle">
-          🛒 Cart
-          <span class="cart-count" id="cartCount">0</span>
-        </a>
+  <h1>The Collection</h1>
 
-        <!-- Mini cart dropdown -->
-        <div class="mini-cart" id="miniCart">
-          <div class="mini-cart-items" id="miniCartItems"></div>
+  <p>
 
-          <div class="mini-cart-footer">
-            <a href="/cart" class="view-cart-btn">
-              View cart
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+    Every lamp is handmade.
 
-  <section class="shop-hero">
-    <h1>The Collection</h1>
-    <p>One off handmade lamps. When they are gone, they are gone.</p>
-  </section>
+    Every bottle has a story.
 
-  <main class="shop-container">
-    <div class="product-grid"></div>
-  </main>
+    Once sold, it may never be recreated.
 
-  <footer class="site-footer">
-    <p>© NotoriousLMPs · Handmade in Scotland</p>
-  </footer>
+  </p>
 
-  <script type="module" src="/js/products.js"></script>
-  <script src="/js/cart-count.js"></script>
-  <script src="/js/mini-cart.js"></script>
+</section>
+
+<section class="shop-container">
+
+  <div
+    class="product-grid"
+    id="productGrid">
+
+  </div>
+
+</section>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<!-- JavaScript -->
+
+<script type="module" src="/js/products.js"></script>
+
+<script type="module" src="/js/cart-count.js"></script>
+
+<script type="module" src="/js/mini-cart.js"></script>
+<script type="module" src="/js/layout.js"></script>
+
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard | NotoriousLMPs</title>
+  <title>Admin Dashboard | Notorious Lamps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -11,61 +11,57 @@
 
 <body style="display:none;">
 
-  <h1>Admin Dashboard</h1>
+  <div id="adminHeader"></div>
 
-  <section class="admin-section">
-    <h2 id="formTitle">Add Product</h2>
+  <main class="admin-dashboard">
 
-    <form id="productForm">
+    <section class="admin-stats">
+      <div class="admin-stat-card">
+        <h2 id="productCount">0</h2>
+        <p>Products</p>
+      </div>
 
-      <input type="hidden" name="productId">
+      <div class="admin-stat-card">
+        <h2 id="orderCount">0</h2>
+        <p>Orders</p>
+      </div>
 
-      <label>
-        Product title
-        <input type="text" name="title" required>
-      </label>
+      <div class="admin-stat-card">
+        <h2 id="customerCount">0</h2>
+        <p>Customers</p>
+      </div>
 
-      <label>
-        Price (£)
-        <input type="number" name="price" step="0.01" required>
-      </label>
+      <div class="admin-stat-card">
+        <h2 id="revenueTotal">£0.00</h2>
+        <p>Revenue</p>
+      </div>
+    </section>
 
-      <!-- ✅ NEW STOCK FIELD -->
-      <label>
-        Stock available
-        <input type="number" name="stock" min="0" required>
-      </label>
+    <section class="admin-menu">
+      <a href="/admin/products/" class="admin-menu-card">
+        <h2>Products</h2>
+        <p>Add and manage lamps.</p>
+      </a>
 
-      <label>
-        Image URLs (comma separated)
-        <textarea name="images" rows="3" required></textarea>
-      </label>
+      <a href="/admin/orders/" class="admin-menu-card">
+        <h2>Orders</h2>
+        <p>Manage customer orders.</p>
+      </a>
 
-      <label>
-        Description
-        <textarea name="description" rows="4" required></textarea>
-      </label>
+      <a href="/admin/customers/" class="admin-menu-card">
+        <h2>Customers</h2>
+        <p>View customer accounts.</p>
+      </a>
 
-      <!-- Featured toggle -->
-      <label style="display:flex; align-items:center; gap:0.5rem; margin-top:1rem;">
-        <input type="checkbox" name="featured">
-        Featured on homepage
-      </label>
+      <a href="/admin/settings/" class="admin-menu-card">
+        <h2>Settings</h2>
+        <p>Store settings.</p>
+      </a>
+    </section>
 
-      <button type="submit" id="submitBtn">Add product</button>
-      <button type="button" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+  </main>
 
-    </form>
-  </section>
-
-  <section class="admin-section">
-    <h2>Existing products</h2>
-    <div id="productList"></div>
-  </section>
-
-  <button id="logoutBtn">Logout</button>
-
-  <script type="module" src="/js/admin.js"></script>
-
+  <script type="module" src="/js/admin-dashboard.js"></script>
+  <script type="module" src="/js/admin-layout.js"></script>
 </body>
 </html>

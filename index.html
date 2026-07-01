@@ -1,69 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>NotoriousLMPs | Handmade Bottle Lamps</title>
+  <title>Notorious Lamps | Handmade Bottle Lamps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Handmade upcycled bottle lamps made in Scotland. Bold, unique lighting pieces with character.">
 
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="logo">
-      <a href="/">NotoriousLMPs</a>
-    </div>
+  <div id="siteHeader"></div>
 
-    <nav class="nav">
-      <a href="/shop">Shop</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+  <main>
+    <section class="hero">
+      <h1>Bold. Handmade. One of a kind.</h1>
+      <p>Upcycled bottle lamps, handmade in Scotland.</p>
+      <a href="/shop/" class="cta-button">Shop the collection</a>
+    </section>
 
-      <div class="cart-wrapper">
-        <a href="/cart" class="cart-link">
-          🛒 Cart
-          <span class="cart-count" id="cartCount">0</span>
-        </a>
+    <section class="featured">
+      <h2>Featured pieces</h2>
 
-        <div class="mini-cart" id="miniCart">
-          <div class="mini-cart-items" id="miniCartItems"></div>
-          <div class="mini-cart-footer">
-            <a href="/cart" class="view-cart-btn">View cart</a>
-          </div>
-        </div>
+      <div class="product-grid" id="featuredGrid">
+        <!-- Featured products load here -->
       </div>
-    </nav>
-  </header>
+    </section>
 
-  <section class="hero">
-    <h1>Bold. Handmade. One of a kind.</h1>
-    <p>Upcycled bottle lamps, handmade in Scotland.</p>
-    <a href="/shop" class="cta-button">Shop the collection</a>
-  </section>
+    <section class="about-snippet">
+      <h2>Made from bottles with a past</h2>
+      <p>
+        Each lamp is handmade using upcycled bottles and bespoke shades.
+        No two are the same. Designed to stand out.
+      </p>
+    </section>
+  </main>
 
-  <section class="featured">
-    <h2>Featured pieces</h2>
-
-    <div class="product-grid" id="featuredGrid">
-      <!-- Featured products load here -->
-    </div>
-  </section>
-
-  <section class="about-snippet">
-    <h2>Made from bottles with a past</h2>
-    <p>
-      Each lamp is handmade using upcycled bottles and bespoke shades.
-      No two are the same. Designed to stand out.
-    </p>
-  </section>
-
-  <footer class="site-footer">
-    <p>© NotoriousLMPs · Handmade in Scotland</p>
-  </footer>
+  <div id="siteFooter"></div>
 
   <script type="module" src="/js/featured-home.js"></script>
-  <script src="/js/cart-count.js"></script>
-  <script src="/js/mini-cart.js"></script>
+  <script type="module" src="/js/cart-count.js"></script>
+  <script type="module" src="/js/mini-cart.js"></script>
+  <script type="module" src="/js/layout.js"></script>
 
 </body>
 </html>
