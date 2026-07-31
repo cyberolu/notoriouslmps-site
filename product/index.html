@@ -2,57 +2,255 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>Product | Notorious Lamps</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="View handmade bottle lamps from Notorious Lamps.">
+
+  <title>Product | Notorious LMPs</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="View handmade bottle lamps from Notorious LMPs."
+  >
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/product.css">
 </head>
+
 <body>
 
   <div id="siteHeader"></div>
 
-  <main class="product-container">
-    <section class="product-gallery">
-      <div class="thumbnail-column" id="thumbnails"></div>
+  <main class="product-page">
 
-      <div class="main-image">
-        <img
-          id="mainImage"
-          src="/assets/placeholder.jpg"
-          alt="Product image">
-      </div>
-    </section>
+    <nav class="product-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/shop/">Lighting</a>
+      <span>›</span>
+      <span id="breadcrumbTitle">Lamp</span>
+    </nav>
 
-    <section class="product-details">
-      <h1 id="productTitle">Loading...</h1>
-      <p class="price" id="productPrice"></p>
-      <p class="description" id="productDescription"></p>
-      <p id="stockStatus"></p>
+    <section class="product-container">
 
-      <div class="shade-selector" id="shadeSelector" style="display:none;">
-        <h2>Choose your shade</h2>
+      <section class="product-gallery">
 
-        <div class="shade-carousel">
-          <button type="button" class="shade-arrow" id="shadePrev">‹</button>
+        <div
+          class="thumbnail-column"
+          id="thumbnails"
+          aria-label="Product images"
+        ></div>
 
-          <div id="shadeOptions"></div>
+        <div class="main-image">
 
-          <button type="button" class="shade-arrow" id="shadeNext">›</button>
+          <button
+            type="button"
+            class="gallery-arrow gallery-arrow-left"
+            id="galleryPrev"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+          <img
+            id="mainImage"
+            src="/assets/placeholder.jpg"
+            alt="Product image"
+          >
+
+          <button
+            type="button"
+            class="gallery-arrow gallery-arrow-right"
+            id="galleryNext"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <span class="image-counter" id="imageCounter">
+            1 / 1
+          </span>
+
         </div>
+
+      </section>
+
+      <section class="product-details">
+
+        <p class="stock-status" id="stockStatus"></p>
+
+        <p class="price" id="productPrice"></p>
+
+        <h1 id="productTitle">Loading...</h1>
+
+        <div class="product-rating">
+          <strong>Made by Notorious LMPs</strong>
+          <span aria-label="Five star rating">★★★★★</span>
+        </div>
+
+        <div class="product-delivery-summary">
+          <p>✓ Handmade in the United Kingdom</p>
+          <p>✓ Carefully packaged for safe delivery</p>
+          <p>✓ Returns and exchanges accepted</p>
+        </div>
+
+        <div
+          class="shade-selector"
+          id="shadeSelector"
+          style="display:none;"
+        >
+
+          <div class="shade-selector-heading">
+            <h2>Choose your shade</h2>
+
+            <p id="selectedShadeName">
+              Select an available shade
+            </p>
+          </div>
+
+          <div class="shade-carousel">
+
+            <button
+              type="button"
+              class="shade-arrow"
+              id="shadePrev"
+              aria-label="Previous shades"
+            >
+              ‹
+            </button>
+
+            <div id="shadeOptions"></div>
+
+            <button
+              type="button"
+              class="shade-arrow"
+              id="shadeNext"
+              aria-label="Next shades"
+            >
+              ›
+            </button>
+
+          </div>
+
+          <div
+            class="light-view-selector"
+            id="lightViewSelector"
+            hidden
+          >
+            <button
+              type="button"
+              id="lightsOffBtn"
+              class="light-view-btn active"
+            >
+              Lights Off
+            </button>
+
+            <button
+              type="button"
+              id="lightsOnBtn"
+              class="light-view-btn"
+            >
+              Lights On
+            </button>
+          </div>
+
+          <button
+            type="button"
+            class="no-shade-option"
+            id="noShadeOption"
+            hidden
+          >
+            <span class="no-shade-radio"></span>
+
+            <span>
+              <strong>No shade</strong>
+              <small>Lamp only</small>
+            </span>
+
+            <strong>£0.00</strong>
+          </button>
+
+        </div>
+
+        <div class="product-price-summary" id="priceSummary">
+
+          <div>
+            <span>Lamp price</span>
+            <strong id="lampPriceSummary">£0.00</strong>
+          </div>
+
+          <div id="shadePriceRow">
+            <span id="shadePriceLabel">Shade</span>
+            <strong id="shadePriceSummary">£0.00</strong>
+          </div>
+
+          <div class="product-total-row">
+            <span>Total</span>
+            <strong id="productTotal">£0.00</strong>
+          </div>
+
+        </div>
+
+        <button id="addToCartBtn" class="add-to-cart">
+          Add to Basket
+        </button>
+
+        <button
+          type="button"
+          id="buyNowBtn"
+          class="buy-now-button"
+        >
+          Buy Now
+        </button>
+
+        <div class="payment-message">
+          <p>
+            Secure checkout powered by Stripe.
+          </p>
+        </div>
+
+      </section>
+
+    </section>
+
+    <section class="product-information">
+
+      <div class="product-description-panel">
+
+        <h2>Item details</h2>
+
+        <p
+          class="description"
+          id="productDescription"
+        ></p>
+
       </div>
 
-      <button id="addToCartBtn" class="add-to-cart">
-        Add to Cart
-      </button>
-      <div class="product-trust">
-      <p>✓ Handmade in Scotland</p>
-      <p>✓ One-of-a-kind design</p>
-      <p>✓ Secure checkout powered by Stripe</p>
-      <p>✓ Carefully packaged for safe delivery</p>
-</div>
+      <div class="product-review-panel">
+
+        <h2>Customer reviews</h2>
+
+        <div class="review-summary">
+          <span class="review-stars">★★★★★</span>
+          <strong>Reviews coming soon</strong>
+        </div>
+
+      </div>
+
+      <div class="related-products-panel">
+
+        <h2>You may also like</h2>
+
+        <p>
+          More handmade lamps will appear here.
+        </p>
+
+      </div>
+
     </section>
+
   </main>
 
   <div id="siteFooter"></div>

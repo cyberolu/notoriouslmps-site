@@ -31,20 +31,37 @@
 
   <div class="cart-summary">
 
-    <p>
+  <div class="cart-summary-row">
+    <span>Subtotal</span>
 
-      Total:
-      <strong>
-        £<span id="cartTotal">0.00</span>
-      </strong>
+    <strong>
+      £<span id="cartSubtotal">0.00</span>
+    </strong>
+  </div>
 
-    </p>
+  <div class="cart-summary-row">
+    <span>UK delivery</span>
 
-    <button id="checkoutBtn" disabled>
+    <strong>
+      £<span id="shippingTotal">0.00</span>
+    </strong>
+  </div>
 
-      Proceed to Secure Checkout
+  <div class="cart-summary-row cart-summary-total">
+    <span>Total</span>
 
-    </button>
+    <strong>
+      £<span id="cartTotal">0.00</span>
+    </strong>
+  </div>
+
+  <p class="shipping-notice">
+    Delivery is available to UK addresses only.
+  </p>
+
+  <button id="checkoutBtn" disabled>
+    Proceed to Secure Checkout
+  </button>
 
     <p
       id="emptyNotice"

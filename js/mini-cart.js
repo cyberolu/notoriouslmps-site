@@ -37,9 +37,18 @@ function renderMiniCart() {
       >
 
       <div class="mini-cart-item-info">
-        <strong>${item.title || "Untitled lamp"}</strong><br>
+        <strong>${item.title || "Untitled Lamp"}</strong><br>
+
+        <small>
+          Shade:
+          <strong>${item.shadeName || "No Shade"}</strong>
+        </small><br>
+
         £${Number(item.price || 0).toFixed(2)}<br>
-        <small>Qty: ${Number(item.qty) || 1}</small>
+
+        <small>
+          Qty: ${Number(item.qty) || 1}
+        </small>
       </div>
 
       <div class="mini-cart-item-actions">

@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>Orders | Notorious Lamps Admin</title>
+  <title>Orders | LMPs Lamps Made by Pauline</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -14,15 +14,42 @@
   <div id="adminHeader"></div>
 
   <main class="admin-container">
+
+    <section class="admin-page-heading">
+      <div>
+        <p class="admin-eyebrow">
+          Order management
+        </p>
+
+        <h1>Orders</h1>
+
+        <p>
+          View purchases and update processing,
+          dispatch and delivery status.
+        </p>
+      </div>
+    </section>
+
+    <p
+      id="ordersStatus"
+      class="admin-status-message"
+      hidden
+    ></p>
+
     <section class="admin-section">
-      <h2>Orders</h2>
+
       <div id="ordersList">
         <p>Loading orders...</p>
       </div>
+
     </section>
+
   </main>
 
-  <script type="module" src="/js/admin-orders.js"></script>
-  <script type="module" src="/js/admin-layout.js"></script>
+  <script
+    type="module"
+    src="/js/admin/orders.js"
+  ></script>
+
 </body>
 </html>

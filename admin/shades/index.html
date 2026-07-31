@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Manage Shades | LMPs Lamps Made by Pauline
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/css/main.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/css/admin.css"
+  >
+</head>
+
+<body style="display: none;">
+
+  <div id="adminHeader"></div>
+
+  <main class="admin-dashboard">
+
+    <section class="admin-page-heading">
+      <div>
+        <p class="admin-eyebrow">
+          Product management
+        </p>
+
+        <h1>Manage Shades</h1>
+
+        <p>
+          Add shade images, prices, stock and
+          availability.
+        </p>
+      </div>
+    </section>
+
+    <p
+      id="shadeStatus"
+      class="admin-status-message"
+      hidden
+    ></p>
+
+    <section class="admin-form-section">
+
+      <h2 id="shadeFormTitle">
+        Add Shade
+      </h2>
+
+      <form id="shadeForm">
+
+        <div class="admin-form-grid">
+
+          <label>
+            Shade name
+
+            <input
+              type="text"
+              name="title"
+              required
+            >
+          </label>
+
+          <label>
+            Standalone price
+
+            <input
+              type="number"
+              name="price"
+              min="0"
+              step="0.01"
+              required
+            >
+          </label>
+
+          <label>
+            Price when purchased with a lamp
+
+            <input
+              type="number"
+              name="lampExtraPrice"
+              min="0"
+              step="0.01"
+              required
+            >
+          </label>
+
+          <label>
+            Stock quantity
+
+            <input
+              type="number"
+              name="stock"
+              min="0"
+              step="1"
+              required
+            >
+          </label>
+
+          <label>
+            Shade photographs
+
+            <input
+              type="file"
+              name="shadeImageFiles"
+              accept="image/*"
+              multiple
+            >
+          </label>
+
+        </div>
+
+        <label>
+          Description
+
+          <textarea
+            name="description"
+            rows="6"
+            required
+          ></textarea>
+        </label>
+
+        <div
+          id="existingShadeImages"
+          class="admin-existing-images"
+        ></div>
+
+        <input
+          type="hidden"
+          name="existingImages"
+          value=""
+        >
+
+        <div class="admin-checkbox-row">
+
+          <label>
+            <input
+              type="checkbox"
+              name="available"
+              checked
+            >
+
+            Shade is available for purchase
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              name="featured"
+            >
+
+            Feature this shade
+          </label>
+
+        </div>
+
+        <div class="admin-form-actions">
+
+          <button
+            type="submit"
+            id="shadeSubmitButton"
+          >
+            Add shade
+          </button>
+
+          <button
+            type="button"
+            id="cancelShadeEditButton"
+            hidden
+          >
+            Cancel editing
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="admin-list-section">
+
+      <div class="admin-section-heading">
+        <h2>Existing Shades</h2>
+
+        <p>
+          Edit prices, stock, availability and
+          photographs.
+        </p>
+      </div>
+
+      <div id="shadeList">
+        <p>Loading shades...</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script
+    type="module"
+    src="/js/admin/shades.js"
+  ></script>
+
+</body>
+</html>

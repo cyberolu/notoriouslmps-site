@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Manage Lamps | LMPs Lamps Made by Pauline
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/css/main.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/css/admin.css"
+  >
+</head>
+
+<body style="display: none;">
+
+  <div id="adminHeader"></div>
+
+  <main class="admin-dashboard">
+
+    <section class="admin-page-heading">
+      <div>
+        <p class="admin-eyebrow">
+          Product management
+        </p>
+
+        <h1>Manage Lamps</h1>
+
+        <p>
+          Add lamp bases, prices, stock, photographs
+          and compatible shades.
+        </p>
+      </div>
+    </section>
+
+    <p
+      id="lampStatus"
+      class="admin-status-message"
+      hidden
+    ></p>
+
+    <section class="admin-form-section">
+
+      <h2 id="lampFormTitle">
+        Add Lamp
+      </h2>
+
+      <form id="lampForm">
+
+        <div class="admin-form-grid">
+
+          <label>
+            Lamp name
+
+            <input
+              type="text"
+              name="title"
+              required
+            >
+          </label>
+
+          <label>
+            Lamp price
+
+            <input
+              type="number"
+              name="price"
+              min="0"
+              step="0.01"
+              required
+            >
+          </label>
+
+          <label>
+            Stock quantity
+
+            <input
+              type="number"
+              name="stock"
+              min="0"
+              step="1"
+              required
+            >
+          </label>
+
+          <label>
+            Lamp photographs
+
+            <input
+              type="file"
+              name="lampImageFiles"
+              accept="image/*"
+              multiple
+            >
+          </label>
+
+        </div>
+
+        <label>
+          Description
+
+          <textarea
+            name="description"
+            rows="6"
+            required
+          ></textarea>
+        </label>
+
+        <div
+          id="existingLampImages"
+          class="admin-existing-images"
+        ></div>
+
+        <input
+          type="hidden"
+          name="existingImages"
+          value=""
+        >
+
+        <div class="admin-checkbox-row">
+
+          <label>
+            <input
+              type="checkbox"
+              name="featured"
+            >
+
+            Feature this lamp
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              name="allowNoShade"
+              checked
+            >
+
+            Allow purchase without a shade
+          </label>
+
+        </div>
+
+        <section class="admin-pairing-section">
+
+          <div class="admin-section-heading">
+            <h3>Compatible Shades</h3>
+
+            <p>
+              Select the shades that can be purchased
+              with this lamp.
+            </p>
+          </div>
+
+          <div id="availableShadesList"></div>
+
+          <div
+            id="selectedShadePairings"
+            class="selected-shade-pairings"
+          ></div>
+
+        </section>
+
+        <div class="admin-form-actions">
+
+          <button
+            type="submit"
+            id="lampSubmitButton"
+          >
+            Add lamp
+          </button>
+
+          <button
+            type="button"
+            id="cancelLampEditButton"
+            hidden
+          >
+            Cancel editing
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="admin-list-section">
+
+      <div class="admin-section-heading">
+        <h2>Existing Lamps</h2>
+
+        <p>
+          Edit stock, prices, images and linked
+          shades.
+        </p>
+      </div>
+
+      <div id="lampList">
+        <p>Loading lamps...</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script
+    type="module"
+    src="/js/admin/lamps.js"
+  ></script>
+
+</body>
+</html>

@@ -10,7 +10,16 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const cartItemsEl = document.getElementById("cartItems");
-const cartTotalEl = document.getElementById("cartTotal");
+const cartSubtotalEl =
+  document.getElementById("cartSubtotal");
+
+const shippingTotalEl =
+  document.getElementById("shippingTotal");
+
+const cartTotalEl =
+  document.getElementById("cartTotal");
+
+const SHIPPING_COST = 5.95;
 const checkoutBtn = document.getElementById("checkoutBtn");
 const emptyNotice = document.getElementById("emptyNotice");
 
@@ -51,14 +60,25 @@ function saveCart() {
 }
 
 function renderCart() {
-  if (!cartItemsEl || !cartTotalEl || !checkoutBtn) return;
+  if (
+    !cartItemsEl ||
+    !cartSubtotalEl ||
+    !shippingTotalEl ||
+    !cartTotalEl ||
+    !checkoutBtn
+  ) {
+    return;
+  }
 
   cartItemsEl.innerHTML = "";
-  let total = 0;
+  let subtotal = 0;
 
   if (cart.length === 0) {
     cartItemsEl.innerHTML = "<p>Your cart is empty.</p>";
+    cartSubtotalEl.textContent = "0.00";
+    shippingTotalEl.textContent = "0.00";
     cartTotalEl.textContent = "0.00";
+
     checkoutBtn.disabled = true;
 
     if (emptyNotice) {
@@ -79,7 +99,7 @@ function renderCart() {
     const price = Number(item.price || 0);
     const qty = Number(item.qty || 1);
 
-    total += price * qty;
+    subtotal += price * qty;
 
     const div = document.createElement("div");
     div.className = "cart-item";
@@ -93,6 +113,7 @@ function renderCart() {
 
       <div class="cart-item-info">
         <strong>${item.title || "Untitled Lamp"}</strong><br>
+        <small>Shade: ${item.shadeName || "No Shade"}</small><br>
         £${price.toFixed(2)}
       </div>
 
@@ -132,7 +153,23 @@ function renderCart() {
     cartItemsEl.appendChild(div);
   });
 
-  cartTotalEl.textContent = total.toFixed(2);
+  const shipping =
+    cart.length > 0
+      ? SHIPPING_COST
+      : 0;
+
+  const total =
+    subtotal + shipping;
+
+  cartSubtotalEl.textContent =
+    subtotal.toFixed(2);
+
+  shippingTotalEl.textContent =
+    shipping.toFixed(2);
+
+  cartTotalEl.textContent =
+    total.toFixed(2);
+
   updateCartHelpers();
 }
 
@@ -168,7 +205,16 @@ checkoutBtn.addEventListener("click", async () => {
       })
     });
 
-    const data = await res.json();
+    const text = await res.text();
+
+    let data = {};
+
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch (error) {
+      console.error("Checkout raw response:", text);
+      throw new Error("Checkout returned an invalid response.");
+    }
 
     if (!res.ok) {
       throw new Error(data.error || "Checkout request failed");

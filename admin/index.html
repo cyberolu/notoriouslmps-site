@@ -2,66 +2,182 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard | Notorious Lamps</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/admin.css">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Admin Dashboard | LMPs Lamps Made by Pauline
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/css/main.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/css/admin.css"
+  >
 </head>
 
-<body style="display:none;">
+<body style="display: none;">
 
   <div id="adminHeader"></div>
 
   <main class="admin-dashboard">
 
-    <section class="admin-stats">
-      <div class="admin-stat-card">
-        <h2 id="productCount">0</h2>
-        <p>Products</p>
-      </div>
+    <section class="admin-page-heading">
+      <div>
+        <p class="admin-eyebrow">
+          Store management
+        </p>
 
-      <div class="admin-stat-card">
-        <h2 id="orderCount">0</h2>
-        <p>Orders</p>
-      </div>
+        <h1>Admin Dashboard</h1>
 
-      <div class="admin-stat-card">
-        <h2 id="customerCount">0</h2>
-        <p>Customers</p>
-      </div>
-
-      <div class="admin-stat-card">
-        <h2 id="revenueTotal">£0.00</h2>
-        <p>Revenue</p>
+        <p>
+          Manage products, orders, customers and store
+          information.
+        </p>
       </div>
     </section>
 
+    <p
+      id="dashboardStatus"
+      class="admin-status-message"
+      hidden
+    ></p>
+
+    <section class="admin-stats">
+
+      <article class="admin-stat-card">
+        <h2 id="lampCount">0</h2>
+        <p>Lamps</p>
+      </article>
+
+      <article class="admin-stat-card">
+        <h2 id="shadeCount">0</h2>
+        <p>Shades</p>
+      </article>
+
+      <article class="admin-stat-card">
+        <h2 id="orderCount">0</h2>
+        <p>Paid Orders</p>
+      </article>
+
+      <article class="admin-stat-card">
+        <h2 id="revenueTotal">£0.00</h2>
+        <p>Revenue</p>
+      </article>
+
+    </section>
+
     <section class="admin-menu">
-      <a href="/admin/products/" class="admin-menu-card">
-        <h2>Products</h2>
-        <p>Add and manage lamps.</p>
+
+      <a
+        href="/admin/lamps/"
+        class="admin-menu-card"
+      >
+        <h2>Lamps</h2>
+
+        <p>
+          Add and manage lamp bases, photographs,
+          descriptions, prices and stock.
+        </p>
       </a>
 
-      <a href="/admin/orders/" class="admin-menu-card">
+      <a
+        href="/admin/shades/"
+        class="admin-menu-card"
+      >
+        <h2>Shades</h2>
+
+        <p>
+          Manage shade stock, standalone prices,
+          lamp prices and availability.
+        </p>
+      </a>
+
+      <a
+        href="/admin/orders/"
+        class="admin-menu-card"
+      >
         <h2>Orders</h2>
-        <p>Manage customer orders.</p>
+
+        <p>
+          View purchases and manage processing,
+          dispatch and delivery.
+        </p>
       </a>
 
-      <a href="/admin/customers/" class="admin-menu-card">
+      <a
+        href="/admin/customers/"
+        class="admin-menu-card"
+      >
         <h2>Customers</h2>
-        <p>View customer accounts.</p>
+
+        <p>
+          View customer accounts and purchase
+          history.
+        </p>
       </a>
 
-      <a href="/admin/settings/" class="admin-menu-card">
-        <h2>Settings</h2>
-        <p>Store settings.</p>
+      <a
+        href="/admin/reviews/"
+        class="admin-menu-card"
+      >
+        <h2>Reviews</h2>
+
+        <p>
+          Approve, hide and manage customer reviews.
+        </p>
       </a>
+
+      <a
+        href="/admin/shipping/"
+        class="admin-menu-card"
+      >
+        <h2>Shipping</h2>
+
+        <p>
+          Manage UK delivery settings and charges.
+        </p>
+      </a>
+
+      <a
+        href="/admin/pages/"
+        class="admin-menu-card"
+      >
+        <h2>Pages</h2>
+
+        <p>
+          Manage returns, delivery, about and other
+          store information.
+        </p>
+      </a>
+
+      <a
+        href="/admin/settings/"
+        class="admin-menu-card"
+      >
+        <h2>Settings</h2>
+
+        <p>
+          Manage store branding, contact details and
+          general settings.
+        </p>
+      </a>
+
     </section>
 
   </main>
 
-  <script type="module" src="/js/admin-dashboard.js"></script>
-  <script type="module" src="/js/admin-layout.js"></script>
+  <script
+    type="module"
+    src="/js/admin/dashboard.js"
+  ></script>
+
 </body>
 </html>
