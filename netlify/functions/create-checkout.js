@@ -12,29 +12,22 @@ function initialiseFirebase() {
     return;
   }
 
-  const privateKey =
-    process.env.FIREBASE_PRIVATE_KEY;
+  const serviceAccountJson =
+    process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
 
-  if (!privateKey) {
+  if (!serviceAccountJson) {
     throw new Error(
-      "FIREBASE_PRIVATE_KEY is missing"
+      "FIREBASE_SERVICE_ACCOUNT_JSON is missing"
     );
   }
 
+  const serviceAccount =
+    JSON.parse(serviceAccountJson);
+
   admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId:
-        process.env.FIREBASE_PROJECT_ID,
-
-      clientEmail:
-        process.env.FIREBASE_CLIENT_EMAIL,
-
-      privateKey:
-        privateKey.replace(
-          /\\n/g,
-          "\n"
-        )
-    })
+    credential: admin.credential.cert(
+      serviceAccount
+    )
   });
 }
 
